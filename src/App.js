@@ -1,38 +1,32 @@
-import logo from './logo.svg'; // декларативный стиль
-import './App.css'; // декларативный стиль
-
-const getDate = () => {
-	// декларативный стиль
-	const today = new Date();
-	const month = today.getMonth() + 1;
-	const year = today.getFullYear();
-	const date = today.getDate();
-	return `${date}/${month}/${year}`;
-}
+import { useState, useEffect } from 'react';
+import styles from './App.module.css';
 
 export const App = () => {
-	const currentDate = getDate();
+	const [todoLists, setTodoLists] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+
+	useEffect(() => {
+		setIsLoading(true);
+
+		fetch('https://jsonplaceholder.typicode.com/todos')
+			.then((loaderData) => loaderData.json())
+			.then((loaderTodoLists) => setTodoLists(loaderTodoLists))
+			.finally(() => setIsLoading(false));
+	}, []);
+
+	console.log(todoLists);
 
 	return (
-		// декларативный стиль
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-				<h2>{currentDate}</h2>
-			</header>
+		<div className={styles.аpp}>
+			{isLoading ? (
+				<div className={styles.loader}></div>
+			) : (
+				todoLists.map(({ id, title, completed }) => (
+					<div className={styles.todoBlock} key={id}>
+						{title} - {completed ? "выполненно" : "не завершено"}
+					</div>
+        ))
+			)}
 		</div>
 	);
 };
-
-
