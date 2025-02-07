@@ -1,0 +1,14 @@
+.todoItem {
+	width: 500px;
+	height: 100%;
+	background-color: rgb(197, 225, 229);
+	border: 1px solid grey;
+	border-radius: 10px;
+	display: flex;
+	padding: 10px;
+}
+
+.todoText {
+	font-size: 35px;
+	width: 70%;
+}
