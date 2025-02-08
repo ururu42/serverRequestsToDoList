@@ -5,9 +5,10 @@ import { Loader } from '../Loader/Loader';
 
 export const TodoList = ({
 	todos,
+	setTodoLists,
 	isLoading,
 	refreshTasks,
-	setActiveTask,
+	setActiveTodo,
 	idBySearchPhrase,
 }) => {
 	if (isLoading) {
@@ -28,8 +29,10 @@ export const TodoList = ({
 				<TodoItem
 					key={todo.id}
 					todo={todo}
+					todos={todos}
+					setTodoLists={setTodoLists}
 					refreshTasks={refreshTasks}
-					setActiveTask={setActiveTask}
+					setActiveTodo={setActiveTodo}
 					idBySearchPhrase={idBySearchPhrase}
 				/>
 			))}

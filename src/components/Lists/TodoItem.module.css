@@ -1,14 +1,28 @@
 .todoItem {
 	width: 500px;
 	height: 100%;
-	background-color: rgb(197, 225, 229);
+	/* background-color: rgb(197, 225, 229); */
+  background-color: rgb(255, 185, 195);
 	border: 1px solid grey;
 	border-radius: 10px;
 	display: flex;
 	padding: 10px;
+  margin: 0;
+  margin-bottom: 5px;
+  
 }
 
 .todoText {
 	font-size: 35px;
 	width: 70%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.checkbox {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	
 }

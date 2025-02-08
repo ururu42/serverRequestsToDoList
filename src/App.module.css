@@ -1,0 +1,16 @@
+.body {
+  width: 600px;
+  height: 100%;
+  background: rgb(165, 165, 165);
+  border-radius: 10px;
+  margin: auto;
+}
+
+.container {
+  padding: 40px;
+}
+
+.containerForAddBtnAndSearchForm {
+  display: flex;
+  justify-content: space-between;
+}

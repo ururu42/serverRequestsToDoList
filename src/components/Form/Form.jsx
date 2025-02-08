@@ -1,23 +1,26 @@
 import { useState } from 'react';
 import { useRequestUpdateActiveTodo } from '../hooks/useRequestUpdateActiveTodo';
 
-export const Form = ({ activeTask, setActiveTask, refreshTasks }) => {
-	const [task, setTask] = useState(activeTask);
+export const Form = ({ todos, setTodoLists, activeTodo, setActiveTodo, refreshTasks }) => {
+	// const [todoInForm, setTodoInForm] = useState({ activeTodo });
 
 	// const task = activeTask;
-	const [taskTitle, setTaskTitle] = useState(task.title);
-	const [taskCompleted, setTaskCompleted] = useState(task.completed);
+	const [todoTitle, setTodoTitle] = useState(activeTodo.title);
+	const [todoCompleted, setTodoCompleted] = useState(activeTodo.completed);
 	// const [taskId, setTaskId] = useState(task.id);
 
-	console.log('activeTaskForm', activeTask);
+	console.log('activeTodo', activeTodo);
 	// console.log('taskTitle', taskTitle, 'taskCompleted', taskCompleted);
 
 	const { requestUpdateActiveTodo } = useRequestUpdateActiveTodo({
-		task,
-		taskTitle,
-		taskCompleted,
+		// todoInForm,
+    todos,
+    setTodoLists,
+		activeTodo,
+		todoTitle,
+		todoCompleted,
 		refreshTasks,
-		setActiveTask,
+		setActiveTodo,
 	});
 
 	const updateActiveTodo = (event) => {
@@ -25,25 +28,33 @@ export const Form = ({ activeTask, setActiveTask, refreshTasks }) => {
 		requestUpdateActiveTodo();
 	};
 
-	const handlerSetTodoTitle = ({ target }) => {
-		// console.log('target', target);
-		setTaskTitle(target.value);
-	};
+	// const handlerSetTodoTitle = ({ target }) => {
+	// 	// console.log('target', target);
+	// 	setTodoTitle(target.value);
+	// };
 
-	const handlerSetInputChecked = ({ target }) => {
-		// console.log(target.checked);
-		setTaskCompleted(target.checked);
-	};
+	// const handlerSetInputChecked = ({ target }) => {
+	// 	// console.log(target.checked);
+	// 	setTodoCompleted(target.checked);
+	// };
 
 	return (
 		<form onSubmit={updateActiveTodo}>
-			<input type="text" value={taskTitle} onChange={handlerSetTodoTitle}></input>
+			<input
+				type="text"
+				value={todoTitle}
+				onChange={({ target }) => {
+					setTodoTitle(target.value);
+				}}
+			></input>
 
 			<input
 				type="checkbox"
 				name="completed"
-				checked={taskCompleted}
-				onChange={handlerSetInputChecked}
+				checked={todoCompleted}
+				onChange={({ target }) => {
+					setTodoCompleted(target.checked);
+				}}
 			></input>
 
 			{/* <input type="hidden" value={task.id}></input> */}

@@ -1,0 +1,22 @@
+/* .form {
+  display: flex;
+
+} */
+
+.inputForm{
+  width: 300px;
+  height: 20px;
+}
+
+.searchImgBtn {
+  
+  background: none;
+  border: none;
+ 
+}
+
+.searchImg {
+  margin-top: 10px;
+  width: 20px;
+  height: 20px;
+}

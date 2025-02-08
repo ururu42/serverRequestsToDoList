@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+
+}
+
+.h1{
+  margin: 0;
+}
+
+.checkListImg {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}

@@ -4,21 +4,40 @@ import { UpdateTodoButton } from '../UpdateTodoButton/UpdateTodoButton';
 
 import styles from './TodoItem.module.css';
 
-export const TodoItem = ({ todo, refreshTasks, setActiveTask, idBySearchPhrase }) => {
-	const { id, title, completed } = todo;
+export const TodoItem = ({
+	todo,
+	refreshTasks,
+	setActiveTodo,
+	idBySearchPhrase,
+	todos,
+	setTodoLists,
+}) => {
+	// const { id, title, completed } = todo;
 	// console.log(idBySearchPhrase);
 
 	return (
 		<div className={styles.todoItem}>
-			<div className={styles.todoText} key={id}>
-				{title} - {completed ? 'выполненно' : 'не завершено'}
+			<div className={styles.todoText} key={todo.id}>
+				{todo.title}
+				<input
+					className={styles.checkbox}
+					type="checkbox"
+					checked={todo.completed ? true : false}
+				></input>
 			</div>
 
-			{/* <div className={styles.todoText} key={id}>
-				{title} - {completed ? 'выполненно' : 'не завершено'}
-			</div> */}
-			<DeleteTodoButton todo={todo} refreshTasks={refreshTasks} />
-			<UpdateTodoButton todo={todo} setActiveTask={setActiveTask} />
+			<DeleteTodoButton
+				todos={todos}
+				setTodoLists={setTodoLists}
+				todo={todo}
+				refreshTasks={refreshTasks}
+			/>
+			<UpdateTodoButton
+				todos={todos}
+				setTodoLists={setTodoLists}
+				todo={todo}
+				setActiveTodo={setActiveTodo}
+			/>
 		</div>
 	);
 };

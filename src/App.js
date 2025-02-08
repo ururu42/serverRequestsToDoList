@@ -9,7 +9,7 @@ import { SearchForm } from './components/SearchForm/SearchForm.jsx';
 
 export const App = () => {
 	const [refreshTasksFlag, setRefreshTasksFlag] = useState(false);
-	const [activeTask, setActiveTask] = useState(null);
+	const [activeTodo, setActiveTodo] = useState(null);
 
 	const refreshTasks = () => {
 		setRefreshTasksFlag(!refreshTasksFlag);
@@ -23,28 +23,40 @@ export const App = () => {
 	const [idBySearchPhrase, setIdBySearchPhrase] = useState([]);
 
 	return (
-		<>
-			<H1Header />
-			<TodoList
-				todos={todos}
-				isLoading={isLoading}
-				refreshTasks={refreshTasks}
-				setActiveTask={setActiveTask}
-				idBySearchPhrase={idBySearchPhrase}
-			/>
-			<AddTodoButton
+		<div  className={styles.body}>
+      <div className={styles.container}>
+      <H1Header />
+      <div className={styles.containerForAddBtnAndSearchForm}>
+      
+      <SearchForm setIdBySearchPhrase={setIdBySearchPhrase} />
+      <AddTodoButton
 				refreshTasks={refreshTasks}
 				todos={todos}
 				setTodoLists={setTodoLists}
 			/>
-			{activeTask ? (
+      </div>
+      
+			<TodoList
+				todos={todos}
+				setTodoLists={setTodoLists}
+				isLoading={isLoading}
+				refreshTasks={refreshTasks}
+				setActiveTodo={setActiveTodo}
+				idBySearchPhrase={idBySearchPhrase}
+			/>
+			
+			{activeTodo ? (
 				<Form
-					activeTask={activeTask}
-					setActiveTask={setActiveTask}
+					todos={todos}
+					setTodoLists={setTodoLists}
+					activeTodo={activeTodo}
+					setActiveTodo={setActiveTodo}
 					refreshTasks={refreshTasks}
 				/>
 			) : null}
-			<SearchForm setIdBySearchPhrase={setIdBySearchPhrase} />
-		</>
+      </div>
+			
+			
+		</div>
 	);
 };
