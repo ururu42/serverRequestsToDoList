@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import styles from '../SearchForm/SearchForm.module.css';
 import searchImg from '../SearchForm/search.png';
 
-export const SearchForm = ({ setIdBySearchPhrase }) => {
+export const SearchForm = ({
+	setIdBySearchPhrase,
+	idBySearchPhrase,
+	setIsNothingFound,
+}) => {
 	const [searchPhrase, setSearchPhrase] = useState('');
 
 	const getTodoIdBySearchPhrase = async (event) => {
@@ -15,6 +19,7 @@ export const SearchForm = ({ setIdBySearchPhrase }) => {
 		const filteredTodosIds = filteredTodos.map(({ id }) => id);
 
 		setIdBySearchPhrase(filteredTodosIds);
+		setIsNothingFound(!filteredTodosIds.length);
 	};
 
 	const handlerSearchTaskByPhrase = ({ target }) => {
@@ -32,6 +37,7 @@ export const SearchForm = ({ setIdBySearchPhrase }) => {
 					type="text"
 					value={searchPhrase}
 					onChange={handlerSearchTaskByPhrase}
+					placeholder="Поиск задач"
 				></input>
 				<button className={styles.searchImgBtn} type="submit">
 					<img

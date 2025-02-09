@@ -1,16 +1,17 @@
 .body {
-  width: 600px;
-  height: 100%;
-  background: rgb(165, 165, 165);
-  border-radius: 10px;
-  margin: auto;
+	width: 600px;
+	height: 100%;
+	background: rgb(165, 165, 165);
+	border-radius: 10px;
+	margin: auto;
 }
 
 .container {
-  padding: 40px;
+	padding: 40px;
+	margin-top: 30px;
 }
 
 .containerForAddBtnAndSearchForm {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }

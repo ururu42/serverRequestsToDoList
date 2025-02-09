@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { useRequestUpdateActiveTodo } from '../hooks/useRequestUpdateActiveTodo';
 
-export const Form = ({ todos, setTodoLists, activeTodo, setActiveTodo, refreshTasks }) => {
+export const Form = ({
+	todos,
+	setTodoLists,
+	activeTodo,
+	setActiveTodo,
+	refreshTasks,
+}) => {
 	// const [todoInForm, setTodoInForm] = useState({ activeTodo });
 
 	// const task = activeTask;
@@ -14,8 +20,8 @@ export const Form = ({ todos, setTodoLists, activeTodo, setActiveTodo, refreshTa
 
 	const { requestUpdateActiveTodo } = useRequestUpdateActiveTodo({
 		// todoInForm,
-    todos,
-    setTodoLists,
+		todos,
+		setTodoLists,
 		activeTodo,
 		todoTitle,
 		todoCompleted,
@@ -58,7 +64,7 @@ export const Form = ({ todos, setTodoLists, activeTodo, setActiveTodo, refreshTa
 			></input>
 
 			{/* <input type="hidden" value={task.id}></input> */}
-			<button type="submit">Редактировать задачу</button>
+			<button type="submit">Сохранить изменения</button>
 		</form>
 	);
 };

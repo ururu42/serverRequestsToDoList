@@ -6,6 +6,7 @@ import { AddTodoButton } from './components/AddTodoButton/AddTodoButton';
 import { Form } from './components/Form/Form.jsx';
 import { useRequestGetTodos } from './components/hooks/useRequestGetTodos.jsx';
 import { SearchForm } from './components/SearchForm/SearchForm.jsx';
+import { SortAlphabetically } from './components/SortAlphabetically/SortAlphabetically.jsx';
 
 export const App = () => {
 	const [refreshTasksFlag, setRefreshTasksFlag] = useState(false);
@@ -22,41 +23,64 @@ export const App = () => {
 
 	const [idBySearchPhrase, setIdBySearchPhrase] = useState([]);
 
+	const [sortedTodo, setSortedTodo] = useState([]);
+	const [isSorted, setIsSorted] = useState(false);
+	const [isBackButton, setBackButton] = useState(false);
+	const [isNothingFound, setIsNothingFound] = useState(false);
+
 	return (
-		<div  className={styles.body}>
-      <div className={styles.container}>
-      <H1Header />
-      <div className={styles.containerForAddBtnAndSearchForm}>
-      
-      <SearchForm setIdBySearchPhrase={setIdBySearchPhrase} />
-      <AddTodoButton
-				refreshTasks={refreshTasks}
-				todos={todos}
-				setTodoLists={setTodoLists}
-			/>
-      </div>
-      
-			<TodoList
-				todos={todos}
-				setTodoLists={setTodoLists}
-				isLoading={isLoading}
-				refreshTasks={refreshTasks}
-				setActiveTodo={setActiveTodo}
-				idBySearchPhrase={idBySearchPhrase}
-			/>
-			
-			{activeTodo ? (
-				<Form
+		<div className={styles.body}>
+			<div className={styles.container}>
+				<H1Header />
+				<div className={styles.containerForAddBtnAndSearchForm}>
+					<SearchForm
+						setIdBySearchPhrase={setIdBySearchPhrase}
+            idBySearchPhrase={idBySearchPhrase}
+						setIsNothingFound={setIsNothingFound}
+					/>
+					<SortAlphabetically
+						todos={todos}
+						setTodoLists={setTodoLists}
+						sortedTodo={sortedTodo}
+						setSortedTodo={setSortedTodo}
+						isSorted={isSorted}
+						setIsSorted={setIsSorted}
+					/>
+					<AddTodoButton
+						refreshTasks={refreshTasks}
+						todos={todos}
+						setTodoLists={setTodoLists}
+					/>
+				</div>
+
+				<TodoList
 					todos={todos}
 					setTodoLists={setTodoLists}
-					activeTodo={activeTodo}
-					setActiveTodo={setActiveTodo}
+					isLoading={isLoading}
 					refreshTasks={refreshTasks}
+					setActiveTodo={setActiveTodo}
+					idBySearchPhrase={idBySearchPhrase}
+					setIdBySearchPhrase={setIdBySearchPhrase}
+					sortedTodo={sortedTodo}
+					setSortedTodo={setSortedTodo}
+					isSorted={isSorted}
+					setIsSorted={setIsSorted}
+					isBackButton={isBackButton}
+					setBackButton={setBackButton}
+					isNothingFound={isNothingFound}
+					setIsNothingFound={setIsNothingFound}
 				/>
-			) : null}
-      </div>
-			
-			
+
+				{activeTodo ? (
+					<Form
+						todos={todos}
+						setTodoLists={setTodoLists}
+						activeTodo={activeTodo}
+						setActiveTodo={setActiveTodo}
+						refreshTasks={refreshTasks}
+					/>
+				) : null}
+			</div>
 		</div>
 	);
 };
