@@ -9,17 +9,8 @@ import { SearchForm } from './components/SearchForm/SearchForm.jsx';
 import { SortAlphabetically } from './components/SortAlphabetically/SortAlphabetically.jsx';
 
 export const App = () => {
-	const [refreshTasksFlag, setRefreshTasksFlag] = useState(false);
 	const [activeTodo, setActiveTodo] = useState(null);
-
-	const refreshTasks = () => {
-		setRefreshTasksFlag(!refreshTasksFlag);
-	};
-
-	const { todos, setTodoLists, isLoading } = useRequestGetTodos(
-		refreshTasksFlag,
-		refreshTasks,
-	);
+	const { todos, setTodoLists, isLoading } = useRequestGetTodos();
 
 	const [idBySearchPhrase, setIdBySearchPhrase] = useState([]);
 
@@ -35,36 +26,27 @@ export const App = () => {
 				<div className={styles.containerForAddBtnAndSearchForm}>
 					<SearchForm
 						setIdBySearchPhrase={setIdBySearchPhrase}
-            idBySearchPhrase={idBySearchPhrase}
 						setIsNothingFound={setIsNothingFound}
+						todos={todos}
 					/>
 					<SortAlphabetically
 						todos={todos}
-						setTodoLists={setTodoLists}
-						sortedTodo={sortedTodo}
 						setSortedTodo={setSortedTodo}
 						isSorted={isSorted}
 						setIsSorted={setIsSorted}
 					/>
-					<AddTodoButton
-						refreshTasks={refreshTasks}
-						todos={todos}
-						setTodoLists={setTodoLists}
-					/>
+					<AddTodoButton />
 				</div>
 
 				<TodoList
 					todos={todos}
 					setTodoLists={setTodoLists}
 					isLoading={isLoading}
-					refreshTasks={refreshTasks}
 					setActiveTodo={setActiveTodo}
 					idBySearchPhrase={idBySearchPhrase}
 					setIdBySearchPhrase={setIdBySearchPhrase}
 					sortedTodo={sortedTodo}
-					setSortedTodo={setSortedTodo}
 					isSorted={isSorted}
-					setIsSorted={setIsSorted}
 					isBackButton={isBackButton}
 					setBackButton={setBackButton}
 					isNothingFound={isNothingFound}
@@ -72,13 +54,7 @@ export const App = () => {
 				/>
 
 				{activeTodo ? (
-					<Form
-						todos={todos}
-						setTodoLists={setTodoLists}
-						activeTodo={activeTodo}
-						setActiveTodo={setActiveTodo}
-						refreshTasks={refreshTasks}
-					/>
+					<Form activeTodo={activeTodo} setActiveTodo={setActiveTodo} />
 				) : null}
 			</div>
 		</div>

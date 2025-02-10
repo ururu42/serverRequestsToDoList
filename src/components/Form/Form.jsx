@@ -1,31 +1,15 @@
 import { useState } from 'react';
 import { useRequestUpdateActiveTodo } from '../hooks/useRequestUpdateActiveTodo';
 
-export const Form = ({
-	todos,
-	setTodoLists,
-	activeTodo,
-	setActiveTodo,
-	refreshTasks,
-}) => {
-	// const [todoInForm, setTodoInForm] = useState({ activeTodo });
-
-	// const task = activeTask;
-	const [todoTitle, setTodoTitle] = useState(activeTodo.title);
-	const [todoCompleted, setTodoCompleted] = useState(activeTodo.completed);
-	// const [taskId, setTaskId] = useState(task.id);
-
-	console.log('activeTodo', activeTodo);
-	// console.log('taskTitle', taskTitle, 'taskCompleted', taskCompleted);
+export const Form = ({ activeTodo, setActiveTodo }) => {
+	const [todoTitle, setTodoTitle] = useState(activeTodo[1].title);
+	const [todoCompleted, setTodoCompleted] = useState(activeTodo[1].completed);
 
 	const { requestUpdateActiveTodo } = useRequestUpdateActiveTodo({
-		// todoInForm,
-		todos,
-		setTodoLists,
 		activeTodo,
 		todoTitle,
 		todoCompleted,
-		refreshTasks,
+
 		setActiveTodo,
 	});
 
@@ -33,16 +17,6 @@ export const Form = ({
 		event.preventDefault();
 		requestUpdateActiveTodo();
 	};
-
-	// const handlerSetTodoTitle = ({ target }) => {
-	// 	// console.log('target', target);
-	// 	setTodoTitle(target.value);
-	// };
-
-	// const handlerSetInputChecked = ({ target }) => {
-	// 	// console.log(target.checked);
-	// 	setTodoCompleted(target.checked);
-	// };
 
 	return (
 		<form onSubmit={updateActiveTodo}>
@@ -63,7 +37,6 @@ export const Form = ({
 				}}
 			></input>
 
-			{/* <input type="hidden" value={task.id}></input> */}
 			<button type="submit">Сохранить изменения</button>
 		</form>
 	);

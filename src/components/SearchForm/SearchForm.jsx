@@ -1,32 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from '../SearchForm/SearchForm.module.css';
 import searchImg from '../SearchForm/search.png';
 
-export const SearchForm = ({
-	setIdBySearchPhrase,
-	idBySearchPhrase,
-	setIsNothingFound,
-}) => {
+export const SearchForm = ({ setIdBySearchPhrase, setIsNothingFound, todos }) => {
 	const [searchPhrase, setSearchPhrase] = useState('');
 
 	const getTodoIdBySearchPhrase = async (event) => {
 		event.preventDefault();
+		const searchTodos = todos.filter(({ title }) => title.indexOf(searchPhrase) >= 0);
 
-		const response = await fetch(
-			`http://localhost:3006/tasks?title_like=${searchPhrase}`,
-		);
-		const filteredTodos = await response.json();
-		const filteredTodosIds = filteredTodos.map(({ id }) => id);
+		const searchTodosInArray = Object.entries(searchTodos).map(([id, task]) => ({
+			id,
+			...task,
+		}));
 
-		setIdBySearchPhrase(filteredTodosIds);
-		setIsNothingFound(!filteredTodosIds.length);
+		const IdSearchTodosInArray = searchTodosInArray.map((todo) => {
+			return todo.id;
+		});
+
+		setIdBySearchPhrase(IdSearchTodosInArray);
+		setIsNothingFound(!IdSearchTodosInArray.length);
 	};
 
 	const handlerSearchTaskByPhrase = ({ target }) => {
-		console.log('target.value', target.value, 'searchPhrase', searchPhrase);
-
 		setSearchPhrase(target.value);
-		// console.log(todos);
 	};
 
 	return (

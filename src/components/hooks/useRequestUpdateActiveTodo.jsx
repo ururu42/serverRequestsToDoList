@@ -1,38 +1,22 @@
+import { ref, set } from 'firebase/database';
+import { db } from '../../firebase';
+
 export const useRequestUpdateActiveTodo = ({
-	todos,
-	setTodoLists,
 	activeTodo,
 	todoTitle,
 	todoCompleted,
-	// refreshTasks,
 	setActiveTodo,
 }) => {
 	const requestUpdateActiveTodo = async () => {
-		console.log(
-			'todoInForm',
-			activeTodo,
-			'taskTitle',
-			todoTitle,
-			'taskCompleted',
-			todoCompleted,
-		);
+		const updateTaskDbRef = ref(db, `tasks/${activeTodo[0]}`);
 
-		const response = await fetch(`http://localhost:3006/tasks/${activeTodo.id}`, {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json;charset=utf-8' },
-			body: JSON.stringify({
-				title: todoTitle,
-				completed: todoCompleted,
-			}),
+		set(updateTaskDbRef, {
+			title: todoTitle,
+			completed: todoCompleted,
+		}).then((response) => {
+			console.log('Задача обновлена, ответ от сервера:', response);
 		});
-		const updateTodo = await response.json();
-		console.log('Задача обновлена, ответ от сервера:', updateTodo);
 
-		const updatedTodos = todos.map((todo) =>
-			todo.id === updateTodo.id ? updateTodo : todo,
-		);
-
-		setTodoLists(updatedTodos);
 		setActiveTodo(null);
 	};
 

@@ -1,15 +1,15 @@
-export const useRequestDeleteActiveTodo = ({ id, refreshTasks, todos, setTodoLists }) => {
+import { ref, remove } from 'firebase/database';
+import { db } from '../../firebase';
+
+export const useRequestDeleteActiveTodo = ({ id }) => {
 	const requestDeleteActiveTodo = async () => {
-		console.log(todos);
+		const deletedTodoDbRef = ref(db, `tasks/${id}`);
 
-		const response = await fetch(`http://localhost:3006/tasks/${id}`, {
-			method: 'DELETE',
+		remove(deletedTodoDbRef).then((response) => {
+			console.log('Задача удалена, ответ от сервера:', response);
 		});
-		const deletedTodo = await response.json();
-		console.log('Задача удалена, ответ от сервера:', deletedTodo);
 
-		const todosWithOutDeleteTodo = todos.filter((todo) => todo.id !== id);
-		setTodoLists(todosWithOutDeleteTodo);
+		
 	};
 
 	return {

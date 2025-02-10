@@ -1,28 +1,31 @@
 import { useState, useEffect } from 'react';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../../firebase';
 
-export const useRequestGetTodos = (refreshTasksFlag) => {
-	const [todos, setTodoLists] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+export const useRequestGetTodos = () => {
+	const [todos, setTodoLists] = useState({});
+	const [isLoading, setIsLoading] = useState(true);
 
 	const fetchTasks = async () => {
-		if (isLoading) return;
+		const todoListDbRef = ref(db, 'tasks');
 
-		setIsLoading(true);
+		return onValue(todoListDbRef, (snapshot) => {
+			const loadedTasks = snapshot.val() || [];
 
-		const response = await fetch('http://localhost:3006/tasks');
-    const todos = await response.json()
-		setTodoLists(todos);
+      const loadedTasksArray = Object.entries(loadedTasks).map(([id, task]) => ({ id, ...task }))
 
-		setIsLoading(false);
+			setTodoLists(loadedTasksArray);
+			setIsLoading(false);
+		});
 	};
 
-	useEffect(() => { 
+	useEffect(() => {
 		fetchTasks();
 	}, []);
 
 	return {
 		todos,
-    setTodoLists,
+		setTodoLists,
 		isLoading,
 	};
 };
