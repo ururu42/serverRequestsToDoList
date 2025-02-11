@@ -7,14 +7,10 @@ import styles from './TodoItem.module.css';
 
 export const TodoItem = ({
 	todo,
-	refreshTasks,
 	setActiveTodo,
-	idBySearchPhrase,
 	todos,
 	setTodoLists,
 }) => {
-	// const { id, title, completed } = todo;
-	// console.log(idBySearchPhrase);
 
 	return (
 		<div className={styles.todoItem}>
@@ -31,11 +27,8 @@ export const TodoItem = ({
 				todos={todos}
 				setTodoLists={setTodoLists}
 				todo={todo}
-				refreshTasks={refreshTasks}
 			/>
 			<UpdateTodoButton
-				todos={todos}
-				setTodoLists={setTodoLists}
 				todo={todo}
 				setActiveTodo={setActiveTodo}
 			/>

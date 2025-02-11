@@ -2,7 +2,7 @@
   "tasks": [
     {
       "title": "выучить урок",
-      "completed": true,
+      "completed": false,
       "id": "-Ofu0Ic"
     },
     {

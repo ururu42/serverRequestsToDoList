@@ -1,6 +1,6 @@
-export const useRequestDeleteActiveTodo = ({ id, refreshTasks, todos, setTodoLists }) => {
+export const useRequestDeleteActiveTodo = ({ id, todos, setTodoLists }) => {
 	const requestDeleteActiveTodo = async () => {
-		console.log(todos);
+		
 
 		const response = await fetch(`http://localhost:3006/tasks/${id}`, {
 			method: 'DELETE',

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useRequestAddNewTodo = ({ refreshTasks, todos, setTodoLists }) => {
+export const useRequestAddNewTodo = ({ todos, setTodoLists }) => {
 	const [isCreating, setIsCreating] = useState(false);
 
 	const requestAddNewTodo = async () => {
@@ -23,12 +23,6 @@ export const useRequestAddNewTodo = ({ refreshTasks, todos, setTodoLists }) => {
 		setTodoLists([...todos, newTodoFromServer]);
 		setIsCreating(false);
 
-		// .then((rawResponse) => rawResponse.json())
-		// .then((response) => {
-		// 	console.log('Задача добавлена, ответ сервера:', response);
-		// 	setTodoLists([...todos, response]);
-		// })
-		// .finally(() => setIsCreating(false));
 	};
 
 	return {

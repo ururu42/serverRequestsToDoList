@@ -1,14 +1,10 @@
-import { BackButton } from '../BackButton/BackButton';
 
-export const NothingFound = ({ isNothingFound, setIsNothingFound }) => {
+export const NothingFound = ({ isNothingFound }) => {
 	if (isNothingFound) {
 		return (
 			<>
 				<div>По поисковому запросу задач не найдено</div>
-				{/* <BackButton /> */}
 			</>
 		);
 	}
-
-	// return <div>По поисковому запросу задач не найдено</div>;
 };

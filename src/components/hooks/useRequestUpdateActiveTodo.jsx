@@ -4,19 +4,10 @@ export const useRequestUpdateActiveTodo = ({
 	activeTodo,
 	todoTitle,
 	todoCompleted,
-	// refreshTasks,
 	setActiveTodo,
 }) => {
 	const requestUpdateActiveTodo = async () => {
-		console.log(
-			'todoInForm',
-			activeTodo,
-			'taskTitle',
-			todoTitle,
-			'taskCompleted',
-			todoCompleted,
-		);
-
+		
 		const response = await fetch(`http://localhost:3006/tasks/${activeTodo.id}`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json;charset=utf-8' },

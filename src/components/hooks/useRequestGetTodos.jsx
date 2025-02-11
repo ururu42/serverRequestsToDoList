@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useRequestGetTodos = (refreshTasksFlag) => {
+export const useRequestGetTodos = () => {
 	const [todos, setTodoLists] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 

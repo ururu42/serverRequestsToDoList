@@ -14,9 +14,7 @@ export const TodoList = ({
 	idBySearchPhrase,
 	setIdBySearchPhrase,
 	sortedTodo,
-	setSortedTodo,
 	isSorted,
-	setIsSorted,
 	isNothingFound,
 	setIsNothingFound,
 }) => {
@@ -27,11 +25,7 @@ export const TodoList = ({
 	if (todos.length === 0) {
 		return <div>Список задач пуст</div>;
 	}
-	console.log('sortedTodoInList', sortedTodo, 'isSorted', isSorted);
 
-	// if (!idBySearchPhrase.length) {
-	//   return <div></div>
-	// }
 
 	const filteredTodos = idBySearchPhrase.length
 		? todos.filter(({ id }) => idBySearchPhrase.includes(id))
@@ -45,7 +39,6 @@ export const TodoList = ({
 				<>
 					<NothingFound
 						isNothingFound={isNothingFound}
-						setIsNothingFound={setIsNothingFound}
 					/>
 				</>
 			) : (
@@ -55,9 +48,7 @@ export const TodoList = ({
 						todo={todo}
 						todos={todos}
 						setTodoLists={setTodoLists}
-						refreshTasks={refreshTasks}
 						setActiveTodo={setActiveTodo}
-						idBySearchPhrase={idBySearchPhrase}
 					/>
 				))
 			)}

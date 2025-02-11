@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 import { H1Header } from '../src/components/H1/H1';
 import styles from './App.module.css';
 import { TodoList } from './components/Lists/TodoList';
@@ -9,24 +9,15 @@ import { SearchForm } from './components/SearchForm/SearchForm.jsx';
 import { SortAlphabetically } from './components/SortAlphabetically/SortAlphabetically.jsx';
 
 export const App = () => {
-	const [refreshTasksFlag, setRefreshTasksFlag] = useState(false);
+	
 	const [activeTodo, setActiveTodo] = useState(null);
-
-	const refreshTasks = () => {
-		setRefreshTasksFlag(!refreshTasksFlag);
-	};
-
-	const { todos, setTodoLists, isLoading } = useRequestGetTodos(
-		refreshTasksFlag,
-		refreshTasks,
-	);
-
 	const [idBySearchPhrase, setIdBySearchPhrase] = useState([]);
-
 	const [sortedTodo, setSortedTodo] = useState([]);
 	const [isSorted, setIsSorted] = useState(false);
 	const [isBackButton, setBackButton] = useState(false);
 	const [isNothingFound, setIsNothingFound] = useState(false);
+
+  const { todos, setTodoLists, isLoading } = useRequestGetTodos();
 
 	return (
 		<div className={styles.body}>
@@ -35,19 +26,15 @@ export const App = () => {
 				<div className={styles.containerForAddBtnAndSearchForm}>
 					<SearchForm
 						setIdBySearchPhrase={setIdBySearchPhrase}
-            idBySearchPhrase={idBySearchPhrase}
 						setIsNothingFound={setIsNothingFound}
 					/>
 					<SortAlphabetically
 						todos={todos}
-						setTodoLists={setTodoLists}
-						sortedTodo={sortedTodo}
 						setSortedTodo={setSortedTodo}
 						isSorted={isSorted}
 						setIsSorted={setIsSorted}
 					/>
 					<AddTodoButton
-						refreshTasks={refreshTasks}
 						todos={todos}
 						setTodoLists={setTodoLists}
 					/>
@@ -57,14 +44,11 @@ export const App = () => {
 					todos={todos}
 					setTodoLists={setTodoLists}
 					isLoading={isLoading}
-					refreshTasks={refreshTasks}
 					setActiveTodo={setActiveTodo}
 					idBySearchPhrase={idBySearchPhrase}
 					setIdBySearchPhrase={setIdBySearchPhrase}
 					sortedTodo={sortedTodo}
-					setSortedTodo={setSortedTodo}
 					isSorted={isSorted}
-					setIsSorted={setIsSorted}
 					isBackButton={isBackButton}
 					setBackButton={setBackButton}
 					isNothingFound={isNothingFound}
@@ -77,7 +61,6 @@ export const App = () => {
 						setTodoLists={setTodoLists}
 						activeTodo={activeTodo}
 						setActiveTodo={setActiveTodo}
-						refreshTasks={refreshTasks}
 					/>
 				) : null}
 			</div>

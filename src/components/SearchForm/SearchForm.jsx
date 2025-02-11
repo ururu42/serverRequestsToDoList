@@ -1,12 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from '../SearchForm/SearchForm.module.css';
 import searchImg from '../SearchForm/search.png';
 
-export const SearchForm = ({
-	setIdBySearchPhrase,
-	idBySearchPhrase,
-	setIsNothingFound,
-}) => {
+export const SearchForm = ({ setIdBySearchPhrase, setIsNothingFound }) => {
 	const [searchPhrase, setSearchPhrase] = useState('');
 
 	const getTodoIdBySearchPhrase = async (event) => {
@@ -23,10 +19,7 @@ export const SearchForm = ({
 	};
 
 	const handlerSearchTaskByPhrase = ({ target }) => {
-		console.log('target.value', target.value, 'searchPhrase', searchPhrase);
-
 		setSearchPhrase(target.value);
-		// console.log(todos);
 	};
 
 	return (
