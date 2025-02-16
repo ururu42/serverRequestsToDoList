@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React } from 'react';
 import { TodoItem } from './TodoItem';
 import styles from './TodoList.module.css';
 import { Loader } from '../Loader/Loader';
@@ -9,7 +9,6 @@ export const TodoList = ({
 	todos,
 	setTodoLists,
 	isLoading,
-	refreshTasks,
 	setActiveTodo,
 	idBySearchPhrase,
 	setIdBySearchPhrase,
@@ -26,7 +25,6 @@ export const TodoList = ({
 		return <div>Список задач пуст</div>;
 	}
 
-
 	const filteredTodos = idBySearchPhrase.length
 		? todos.filter(({ id }) => idBySearchPhrase.includes(id))
 		: todos;
@@ -37,9 +35,7 @@ export const TodoList = ({
 		<div className={styles.list}>
 			{isNothingFound ? (
 				<>
-					<NothingFound
-						isNothingFound={isNothingFound}
-					/>
+					<NothingFound isNothingFound={isNothingFound} />
 				</>
 			) : (
 				filteredAndSortedTodos.map((todo) => (
@@ -53,7 +49,10 @@ export const TodoList = ({
 				))
 			)}
 			{idBySearchPhrase.length || isNothingFound ? (
-      <BackButton setIdBySearchPhrase={setIdBySearchPhrase} setIsNothingFound={setIsNothingFound} />
+				<BackButton
+					setIdBySearchPhrase={setIdBySearchPhrase}
+					setIsNothingFound={setIsNothingFound}
+				/>
 			) : null}
 		</div>
 	);

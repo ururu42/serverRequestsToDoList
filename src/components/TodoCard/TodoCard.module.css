@@ -1,11 +1,12 @@
 a {
 	color: black;
-	text-decoration: none;
+	border: 0;
 }
 
 .todoItem {
 	width: 500px;
 	height: 100%;
+	/* background-color: rgb(197, 225, 229); */
 	background-color: rgb(255, 185, 195);
 	border: 1px solid grey;
 	border-radius: 10px;
@@ -18,12 +19,10 @@ a {
 .todoText {
 	font-size: 35px;
 	width: 350px;
-	display: inline-block;
+
 	justify-content: space-between;
 	padding-top: 10px;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
+
 }
 
 .checkImg {
@@ -36,4 +35,14 @@ a {
 	width: 40px;
 	height: 40px;
 	margin-right: 10px;
+}
+
+.backBtn {
+	background: none;
+	border: none;
+}
+
+.backButtonImg {
+	width: 50px;
+	height: 50px;
 }

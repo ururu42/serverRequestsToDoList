@@ -1,12 +1,18 @@
 import editImg from '../UpdateTodoButton/pen.png';
 import styles from '../UpdateTodoButton/UpdateTodoButton.module.css';
 
-export const UpdateTodoButton = ({ todo, setActiveTodo }) => {
+export const UpdateTodoButton = ({
+	todo,
+	setActiveTodo,
+	isFormForEditing,
+	setIsFormForEditing,
+}) => {
 	const { id, title, completed } = todo;
 
 	const handlerSelectActiveTodo = async () => {
 		await new Promise((r) => setTimeout(r));
 		setActiveTodo({ id, title, completed });
+		setIsFormForEditing(true);
 	};
 
 	return (

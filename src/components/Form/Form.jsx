@@ -6,9 +6,8 @@ export const Form = ({
 	setTodoLists,
 	activeTodo,
 	setActiveTodo,
-
+	setIsFormForEditing,
 }) => {
-
 	const [todoTitle, setTodoTitle] = useState(activeTodo.title);
 	const [todoCompleted, setTodoCompleted] = useState(activeTodo.completed);
 
@@ -24,6 +23,7 @@ export const Form = ({
 	const updateActiveTodo = (event) => {
 		event.preventDefault();
 		requestUpdateActiveTodo();
+		setIsFormForEditing(false);
 	};
 
 	return (
