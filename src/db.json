@@ -1,8 +1,8 @@
 {
   "tasks": [
     {
-      "title": "автоматизировать приложение",
-      "completed": true,
+      "title": "автоматизировать прилccffdожение",
+      "completed": false,
       "id": "qOB7N1p"
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "title": "записаться к доктору",
-      "completed": false,
+      "completed": true,
       "id": "fl-cUjq"
     },
     {
