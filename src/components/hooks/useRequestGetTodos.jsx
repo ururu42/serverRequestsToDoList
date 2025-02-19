@@ -10,19 +10,19 @@ export const useRequestGetTodos = () => {
 		setIsLoading(true);
 
 		const response = await fetch('http://localhost:3006/tasks');
-    const todos = await response.json()
+		const todos = await response.json();
 		setTodoLists(todos);
 
 		setIsLoading(false);
 	};
 
-	useEffect(() => { 
+	useEffect(() => {
 		fetchTasks();
 	}, []);
 
 	return {
 		todos,
-    setTodoLists,
+		setTodoLists,
 		isLoading,
 	};
 };

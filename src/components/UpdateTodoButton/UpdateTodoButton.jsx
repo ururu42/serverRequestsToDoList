@@ -1,7 +1,11 @@
 import editImg from '../UpdateTodoButton/pen.png';
 import styles from '../UpdateTodoButton/UpdateTodoButton.module.css';
 
-export const UpdateTodoButton = ({ todo, setActiveTodo }) => {
+import { useContext } from 'react';
+import { SetActiveTodoContext } from '../../Context/todosContex';
+
+export const UpdateTodoButton = ({ todo }) => {
+	const setActiveTodo = useContext(SetActiveTodoContext);
 	const { id, title, completed } = todo;
 
 	const handlerSelectActiveTodo = async () => {

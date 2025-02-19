@@ -2,19 +2,15 @@ import { useState } from 'react';
 import { useRequestUpdateActiveTodo } from '../hooks/useRequestUpdateActiveTodo';
 
 export const Form = ({
-	todos,
-	setTodoLists,
+	// todos,
+	// setTodoLists,
 	activeTodo,
 	setActiveTodo,
-
 }) => {
-
 	const [todoTitle, setTodoTitle] = useState(activeTodo.title);
 	const [todoCompleted, setTodoCompleted] = useState(activeTodo.completed);
 
 	const { requestUpdateActiveTodo } = useRequestUpdateActiveTodo({
-		todos,
-		setTodoLists,
 		activeTodo,
 		todoTitle,
 		todoCompleted,

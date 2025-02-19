@@ -6,19 +6,9 @@
       "id": "-Ofu0Ic"
     },
     {
-      "title": "купить молоко",
-      "completed": true,
-      "id": "BPWlF44"
-    },
-    {
       "title": "сходить в кино",
-      "completed": false,
+      "completed": true,
       "id": "1XzW-Z5"
-    },
-    {
-      "title": "узнать цену ",
-      "completed": false,
-      "id": "3Xx8di6"
     },
     {
       "title": "автоматизировать приложение",
@@ -27,8 +17,13 @@
     },
     {
       "title": "погулять",
-      "completed": true,
-      "id": "TVBW0wz"
+      "completed": false,
+      "id": "EtVvorq"
+    },
+    {
+      "title": "сходить в магазин",
+      "completed": false,
+      "id": "Rbecu2h"
     }
   ]
 }

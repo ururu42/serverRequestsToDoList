@@ -2,13 +2,13 @@ import { useRequestDeleteActiveTodo } from '../hooks/useRequestDeleteActiveTodo'
 import styles from '../DeleteTodoButton/DeleteTodoButton.module.css';
 import deleteImg from '../DeleteTodoButton/bin.png';
 
-export const DeleteTodoButton = ({ todo, todos, setTodoLists }) => {
+export const DeleteTodoButton = ({ todo, todos }) => {
 	const { id } = todo;
 
 	const { requestDeleteActiveTodo } = useRequestDeleteActiveTodo({
 		id,
 		todos,
-		setTodoLists,
+
 	});
 
 	return (

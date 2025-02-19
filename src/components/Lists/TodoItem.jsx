@@ -7,9 +7,7 @@ import styles from './TodoItem.module.css';
 
 export const TodoItem = ({
 	todo,
-	setActiveTodo,
 	todos,
-	setTodoLists,
 }) => {
 
 	return (
@@ -25,12 +23,10 @@ export const TodoItem = ({
 
 			<DeleteTodoButton
 				todos={todos}
-				setTodoLists={setTodoLists}
 				todo={todo}
 			/>
 			<UpdateTodoButton
 				todo={todo}
-				setActiveTodo={setActiveTodo}
 			/>
 		</div>
 	);

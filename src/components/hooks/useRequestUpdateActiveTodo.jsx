@@ -1,13 +1,14 @@
+import { useContext } from 'react';
+import { TodosContext } from '../../Context/todosContex';
+
 export const useRequestUpdateActiveTodo = ({
-	todos,
-	setTodoLists,
 	activeTodo,
 	todoTitle,
 	todoCompleted,
 	setActiveTodo,
 }) => {
+	const { todos, setTodoLists } = useContext(TodosContext);
 	const requestUpdateActiveTodo = async () => {
-		
 		const response = await fetch(`http://localhost:3006/tasks/${activeTodo.id}`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json;charset=utf-8' },
