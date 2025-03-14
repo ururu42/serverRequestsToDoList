@@ -5,33 +5,21 @@ import checkImg from '../Lists/check-mark.png';
 
 import styles from './TodoItem.module.css';
 
-export const TodoItem = ({
-	todo,
-	setActiveTodo,
-	todos,
-	setTodoLists,
-}) => {
-
+export const TodoItem = ({ todo }) => {
 	return (
 		<div className={styles.todoItem}>
 			<div className={styles.todoText} key={todo.id}>
 				{todo.title}
-        {todo.completed ? (
-				<img className={styles.checkImg} src={checkImg} alt="Выполненно"></img>
-			) : null}
+				{todo.completed ? (
+					<img
+						className={styles.checkImg}
+						src={checkImg}
+						alt="Выполненно"
+					></img>
+				) : null}
 			</div>
-
-		
-
-			<DeleteTodoButton
-				todos={todos}
-				setTodoLists={setTodoLists}
-				todo={todo}
-			/>
-			<UpdateTodoButton
-				todo={todo}
-				setActiveTodo={setActiveTodo}
-			/>
+			<DeleteTodoButton todo={todo} />
+			<UpdateTodoButton todo={todo} />
 		</div>
 	);
 };

@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import styles from '../SearchForm/SearchForm.module.css';
 import searchImg from '../SearchForm/search.png';
+import { useDispatch } from 'react-redux';
 
-export const SearchForm = ({ setIdBySearchPhrase, setIsNothingFound }) => {
+export const SearchForm = () => {
 	const [searchPhrase, setSearchPhrase] = useState('');
+
+	const dispatch = useDispatch();
 
 	const getTodoIdBySearchPhrase = async (event) => {
 		event.preventDefault();
@@ -14,8 +17,15 @@ export const SearchForm = ({ setIdBySearchPhrase, setIsNothingFound }) => {
 		const filteredTodos = await response.json();
 		const filteredTodosIds = filteredTodos.map(({ id }) => id);
 
-		setIdBySearchPhrase(filteredTodosIds);
-		setIsNothingFound(!filteredTodosIds.length);
+		dispatch({
+			type: 'SET_ID_BY_SEARCH_PHRASE',
+			payload: filteredTodosIds,
+		});
+
+		dispatch({
+			type: 'SET_IS_NOTHING_FOUND',
+			payload: !filteredTodosIds.length,
+		});
 	};
 
 	const handlerSearchTaskByPhrase = ({ target }) => {

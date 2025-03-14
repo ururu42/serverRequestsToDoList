@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectTodos } from '../../selectors';
 
-export const useRequestAddNewTodo = ({ todos, setTodoLists }) => {
+export const useRequestAddNewTodo = () => {
 	const [isCreating, setIsCreating] = useState(false);
+	const todos = useSelector(selectTodos);
+	const dispatch = useDispatch();
 
 	const requestAddNewTodo = async () => {
 		setIsCreating(true);
@@ -20,9 +24,11 @@ export const useRequestAddNewTodo = ({ todos, setTodoLists }) => {
 		const newTodoFromServer = await response.json();
 		console.log('Задача добавлена, ответ сервера:', newTodoFromServer);
 
-		setTodoLists([...todos, newTodoFromServer]);
+		dispatch({
+			type: 'SET_TODOS_LIST',
+			payload: [...todos, newTodoFromServer],
+		});
 		setIsCreating(false);
-
 	};
 
 	return {

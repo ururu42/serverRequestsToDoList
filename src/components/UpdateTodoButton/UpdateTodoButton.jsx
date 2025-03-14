@@ -1,12 +1,17 @@
 import editImg from '../UpdateTodoButton/pen.png';
 import styles from '../UpdateTodoButton/UpdateTodoButton.module.css';
+import { useDispatch } from 'react-redux';
 
-export const UpdateTodoButton = ({ todo, setActiveTodo }) => {
+export const UpdateTodoButton = ({ todo }) => {
 	const { id, title, completed } = todo;
 
-	const handlerSelectActiveTodo = async () => {
-		await new Promise((r) => setTimeout(r));
-		setActiveTodo({ id, title, completed });
+	const dispatch = useDispatch();
+
+	const handlerSelectActiveTodo = () => {
+		dispatch({
+			type: 'SET_ACTIVE_TODO',
+			payload: { id, title, completed },
+		});
 	};
 
 	return (

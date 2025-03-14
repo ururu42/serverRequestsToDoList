@@ -1,34 +1,34 @@
 {
-  "tasks": [
-    {
-      "title": "выучить урок",
-      "completed": false,
-      "id": "-Ofu0Ic"
-    },
-    {
-      "title": "купить молоко",
-      "completed": true,
-      "id": "BPWlF44"
-    },
-    {
-      "title": "сходить в кино",
-      "completed": false,
-      "id": "1XzW-Z5"
-    },
-    {
-      "title": "узнать цену ",
-      "completed": false,
-      "id": "3Xx8di6"
-    },
-    {
-      "title": "автоматизировать приложение",
-      "completed": true,
-      "id": "qOB7N1p"
-    },
-    {
-      "title": "погулять",
-      "completed": true,
-      "id": "TVBW0wz"
-    }
-  ]
+	"tasks": [
+		{
+			"title": "выучить урок",
+			"completed": false,
+			"id": "-Ofu0Ic"
+		},
+		{
+			"title": "купить молоко",
+			"completed": true,
+			"id": "BPWlF44"
+		},
+		{
+			"title": "сходить в кино",
+			"completed": false,
+			"id": "1XzW-Z5"
+		},
+		{
+			"title": "узнать цену ",
+			"completed": false,
+			"id": "3Xx8di6"
+		},
+		{
+			"title": "автоматизировать приложение",
+			"completed": true,
+			"id": "qOB7N1p"
+		},
+		{
+			"title": "погулять",
+			"completed": true,
+			"id": "TVBW0wz"
+		}
+	]
 }

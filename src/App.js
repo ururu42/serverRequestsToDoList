@@ -7,62 +7,26 @@ import { Form } from './components/Form/Form.jsx';
 import { useRequestGetTodos } from './components/hooks/useRequestGetTodos.jsx';
 import { SearchForm } from './components/SearchForm/SearchForm.jsx';
 import { SortAlphabetically } from './components/SortAlphabetically/SortAlphabetically.jsx';
+import { useSelector } from 'react-redux';
+import { selectActiveTodo } from './selectors';
 
 export const App = () => {
-	
-	const [activeTodo, setActiveTodo] = useState(null);
-	const [idBySearchPhrase, setIdBySearchPhrase] = useState([]);
-	const [sortedTodo, setSortedTodo] = useState([]);
-	const [isSorted, setIsSorted] = useState(false);
-	const [isBackButton, setBackButton] = useState(false);
-	const [isNothingFound, setIsNothingFound] = useState(false);
-
-  const { todos, setTodoLists, isLoading } = useRequestGetTodos();
+	const { isLoading } = useRequestGetTodos();
+	const activeTodo = useSelector(selectActiveTodo);
 
 	return (
 		<div className={styles.body}>
 			<div className={styles.container}>
 				<H1Header />
 				<div className={styles.containerForAddBtnAndSearchForm}>
-					<SearchForm
-						setIdBySearchPhrase={setIdBySearchPhrase}
-						setIsNothingFound={setIsNothingFound}
-					/>
-					<SortAlphabetically
-						todos={todos}
-						setSortedTodo={setSortedTodo}
-						isSorted={isSorted}
-						setIsSorted={setIsSorted}
-					/>
-					<AddTodoButton
-						todos={todos}
-						setTodoLists={setTodoLists}
-					/>
+					<SearchForm />
+					<SortAlphabetically />
+					<AddTodoButton />
 				</div>
 
-				<TodoList
-					todos={todos}
-					setTodoLists={setTodoLists}
-					isLoading={isLoading}
-					setActiveTodo={setActiveTodo}
-					idBySearchPhrase={idBySearchPhrase}
-					setIdBySearchPhrase={setIdBySearchPhrase}
-					sortedTodo={sortedTodo}
-					isSorted={isSorted}
-					isBackButton={isBackButton}
-					setBackButton={setBackButton}
-					isNothingFound={isNothingFound}
-					setIsNothingFound={setIsNothingFound}
-				/>
+				<TodoList isLoading={isLoading} />
 
-				{activeTodo ? (
-					<Form
-						todos={todos}
-						setTodoLists={setTodoLists}
-						activeTodo={activeTodo}
-						setActiveTodo={setActiveTodo}
-					/>
-				) : null}
+				{activeTodo ? <Form activeTodo={activeTodo} /> : null}
 			</div>
 		</div>
 	);

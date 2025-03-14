@@ -1,12 +1,14 @@
 import sortImg from '../SortAlphabetically/sort.png';
 import styles from '../SortAlphabetically/SortAlphabetically.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectTodos, selectIsSorted } from '../../selectors';
 
-export const SortAlphabetically = ({
-	todos,
-	setSortedTodo,
-	isSorted,
-	setIsSorted,
-}) => {
+export const SortAlphabetically = () => {
+	const todos = useSelector(selectTodos);
+	const isSorted = useSelector(selectIsSorted);
+
+	const dispatch = useDispatch();
+
 	const handlerSortAlphabetically = () => {
 		if (!isSorted) {
 			const inHandelSortedTodo = [...todos].sort((a, b) => {
@@ -18,18 +20,28 @@ export const SortAlphabetically = ({
 				}
 				return 0;
 			});
-			setSortedTodo(inHandelSortedTodo);
-			setIsSorted(!isSorted);
+
+			dispatch({
+				type: 'SET_SORTED_TODO',
+				payload: inHandelSortedTodo,
+			});
+
+			dispatch({
+				type: 'SET_IS_SORTED',
+				payload: !isSorted,
+			});
 		} else {
+			dispatch({
+				type: 'SET_SORTED_TODO',
+				payload: todos,
+			});
 
-			setSortedTodo(todos);
-			setIsSorted(!isSorted);
-
+			dispatch({
+				type: 'SET_IS_SORTED',
+				payload: !isSorted,
+			});
 		}
-
-
 	};
-
 
 	return (
 		<>

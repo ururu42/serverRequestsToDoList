@@ -3,11 +3,8 @@ import { Loader } from '../Loader/Loader';
 import addImg from '../AddTodoButton/plus.png';
 import styles from '../AddTodoButton/AddTodoButton.module.css';
 
-export const AddTodoButton = ({ todos, setTodoLists }) => {
-	const { isCreating, requestAddNewTodo } = useRequestAddNewTodo({
-		todos,
-		setTodoLists,
-	});
+export const AddTodoButton = () => {
+	const { isCreating, requestAddNewTodo } = useRequestAddNewTodo({});
 
 	return (
 		<button

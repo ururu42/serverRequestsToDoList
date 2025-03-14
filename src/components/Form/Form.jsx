@@ -1,24 +1,19 @@
 import { useState } from 'react';
 import { useRequestUpdateActiveTodo } from '../hooks/useRequestUpdateActiveTodo';
+import { selectActiveTodo } from '../../selectors';
+import { useSelector } from 'react-redux';
 
-export const Form = ({
-	todos,
-	setTodoLists,
-	activeTodo,
-	setActiveTodo,
-
-}) => {
+export const Form = () => {
+	const activeTodo = useSelector(selectActiveTodo);
 
 	const [todoTitle, setTodoTitle] = useState(activeTodo.title);
 	const [todoCompleted, setTodoCompleted] = useState(activeTodo.completed);
 
+
 	const { requestUpdateActiveTodo } = useRequestUpdateActiveTodo({
-		todos,
-		setTodoLists,
 		activeTodo,
 		todoTitle,
 		todoCompleted,
-		setActiveTodo,
 	});
 
 	const updateActiveTodo = (event) => {
@@ -31,8 +26,8 @@ export const Form = ({
 			<input
 				type="text"
 				value={todoTitle}
-				onChange={({ target }) => {
-					setTodoTitle(target.value);
+				onChange={(event) => {
+					setTodoTitle(event.target.value);
 				}}
 			></input>
 
