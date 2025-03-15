@@ -1,26 +1,26 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { selectTodos } from '../../selectors';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { selectTodos } from '../../selectors';
 
-export const useRequestDeleteActiveTodo = ({ id }) => {
-	const todos = useSelector(selectTodos);
-	const dispatch = useDispatch();
+// export const useRequestDeleteActiveTodo = ({ id }) => {
+// 	const todos = useSelector(selectTodos);
+// 	const dispatch = useDispatch();
 
-	const requestDeleteActiveTodo = async () => {
-		const response = await fetch(`http://localhost:3006/tasks/${id}`, {
-			method: 'DELETE',
-		});
-		const deletedTodo = await response.json();
-		console.log('Задача удалена, ответ от сервера:', deletedTodo);
+// 	const requestDeleteActiveTodo = async () => {
+// 		const response = await fetch(`http://localhost:3006/tasks/${id}`, {
+// 			method: 'DELETE',
+// 		});
+// 		const deletedTodo = await response.json();
+// 		console.log('Задача удалена, ответ от сервера:', deletedTodo);
 
-		const todosWithOutDeleteTodo = todos.filter((todo) => todo.id !== id);
+// 		const todosWithOutDeleteTodo = todos.filter((todo) => todo.id !== id);
 
-		dispatch({
-			type: 'SET_TODOS_LIST',
-			payload: todosWithOutDeleteTodo,
-		});
-	};
+// 		dispatch({
+// 			type: 'SET_TODOS_LIST',
+// 			payload: todosWithOutDeleteTodo,
+// 		});
+// 	};
 
-	return {
-		requestDeleteActiveTodo,
-	};
-};
+// 	return {
+// 		requestDeleteActiveTodo,
+// 	};
+// };

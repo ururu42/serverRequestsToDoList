@@ -1,33 +1,33 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useState, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 
-export const useRequestGetTodos = () => {
+// export const useRequestGetTodos = () => {
 
-	const [isLoading, setIsLoading] = useState(false);
+// 	const [isLoading, setIsLoading] = useState(false);
 
-	const dispatch = useDispatch();
+// 	const dispatch = useDispatch();
 
-	const fetchTasks = async () => {
-		if (isLoading) return;
+// 	const fetchTasks = async () => {
+// 		if (isLoading) return;
 
-		setIsLoading(true);
+// 		setIsLoading(true);
 
-		const response = await fetch('http://localhost:3006/tasks');
-		const todos = await response.json();
+// 		const response = await fetch('http://localhost:3006/tasks');
+// 		const todos = await response.json();
 
-		dispatch({
-			type: 'SET_TODOS_LIST',
-			payload: todos,
-		});
+// 		dispatch({
+// 			type: 'SET_TODOS_LIST',
+// 			payload: todos,
+// 		});
 
-		setIsLoading(false);
-	};
+// 		setIsLoading(false);
+// 	};
 
-	useEffect(() => {
-		fetchTasks();
-	}, []);
+// 	useEffect(() => {
+// 		fetchTasks();
+// 	}, []);
 
-	return {
-		isLoading,
-	};
-};
+// 	return {
+// 		isLoading,
+// 	};
+// };

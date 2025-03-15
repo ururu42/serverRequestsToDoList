@@ -1,10 +1,10 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { TodoItem } from './TodoItem';
 import styles from './TodoList.module.css';
-import { Loader } from '../Loader/Loader';
+// import { Loader } from '../Loader/Loader';
 import { BackButton } from '../BackButton/BackButton';
 import { NothingFound } from '../NothingFound/NothingFound';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
 	selectTodos,
 	selectSortedTodo,
@@ -13,6 +13,8 @@ import {
 	selectIsNothingFound,
 } from '../../selectors';
 
+import { getTodosAsync } from '../../actions';
+
 export const TodoList = ({ isLoading }) => {
 	const todos = useSelector(selectTodos);
 	const sortedTodo = useSelector(selectSortedTodo);
@@ -20,9 +22,18 @@ export const TodoList = ({ isLoading }) => {
 	const idBySearchPhrase = useSelector(selectIdBySearchPhrase);
 	const isNothingFound = useSelector(selectIsNothingFound);
 
-	if (isLoading) {
-		return <Loader />;
-	}
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		const fetchTodos = async () => {
+			dispatch(getTodosAsync);
+		};
+		fetchTodos();
+	}, []);
+
+	// if (isLoading) {
+	// 	return <Loader />;
+	// }
 
 	if (todos.length === 0) {
 		return <div>Список задач пуст</div>;

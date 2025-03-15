@@ -1,11 +1,6 @@
 {
   "tasks": [
     {
-      "title": "узнать цену dfdfsfdseeee",
-      "completed": false,
-      "id": "3Xx8di6"
-    },
-    {
       "title": "автоматизировать приложение",
       "completed": true,
       "id": "qOB7N1p"
@@ -16,14 +11,24 @@
       "id": "TVBW0wz"
     },
     {
-      "title": "wwqr3teryteeee",
-      "completed": true,
-      "id": "iEOhTmA"
+      "title": "сходить в киновввв",
+      "completed": false,
+      "id": "87lOAxJ"
     },
     {
-      "title": "ewqewe",
+      "title": "купить продукты",
       "completed": false,
-      "id": "ZWDEgcf"
+      "id": "uFU0f8Y"
+    },
+    {
+      "title": "фвыфв",
+      "completed": false,
+      "id": "kPAJvyn"
+    },
+    {
+      "title": "купить продукты домой",
+      "completed": false,
+      "id": "0aRo_JI"
     }
   ]
 }
